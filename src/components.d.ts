@@ -6,24 +6,98 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface FdAmbulanceWlApp {
+        /**
+          * @default ""
+         */
+        "basePath": string;
+    }
+    interface FdAmbulanceWlEditor {
+        "entryId": string;
+    }
     interface FdAmbulanceWlList {
     }
 }
+export interface FdAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLFdAmbulanceWlEditorElement;
+}
+export interface FdAmbulanceWlListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLFdAmbulanceWlListElement;
+}
 declare global {
+    interface HTMLFdAmbulanceWlAppElement extends Components.FdAmbulanceWlApp, HTMLStencilElement {
+    }
+    var HTMLFdAmbulanceWlAppElement: {
+        prototype: HTMLFdAmbulanceWlAppElement;
+        new (): HTMLFdAmbulanceWlAppElement;
+    };
+    interface HTMLFdAmbulanceWlEditorElementEventMap {
+        "editor-closed": string;
+    }
+    interface HTMLFdAmbulanceWlEditorElement extends Components.FdAmbulanceWlEditor, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLFdAmbulanceWlEditorElementEventMap>(type: K, listener: (this: HTMLFdAmbulanceWlEditorElement, ev: FdAmbulanceWlEditorCustomEvent<HTMLFdAmbulanceWlEditorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLFdAmbulanceWlEditorElementEventMap>(type: K, listener: (this: HTMLFdAmbulanceWlEditorElement, ev: FdAmbulanceWlEditorCustomEvent<HTMLFdAmbulanceWlEditorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLFdAmbulanceWlEditorElement: {
+        prototype: HTMLFdAmbulanceWlEditorElement;
+        new (): HTMLFdAmbulanceWlEditorElement;
+    };
+    interface HTMLFdAmbulanceWlListElementEventMap {
+        "entry-clicked": string;
+    }
     interface HTMLFdAmbulanceWlListElement extends Components.FdAmbulanceWlList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLFdAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLFdAmbulanceWlListElement, ev: FdAmbulanceWlListCustomEvent<HTMLFdAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLFdAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLFdAmbulanceWlListElement, ev: FdAmbulanceWlListCustomEvent<HTMLFdAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLFdAmbulanceWlListElement: {
         prototype: HTMLFdAmbulanceWlListElement;
         new (): HTMLFdAmbulanceWlListElement;
     };
     interface HTMLElementTagNameMap {
+        "fd-ambulance-wl-app": HTMLFdAmbulanceWlAppElement;
+        "fd-ambulance-wl-editor": HTMLFdAmbulanceWlEditorElement;
         "fd-ambulance-wl-list": HTMLFdAmbulanceWlListElement;
     }
 }
 declare namespace LocalJSX {
-    interface FdAmbulanceWlList {
+    interface FdAmbulanceWlApp {
+        /**
+          * @default ""
+         */
+        "basePath"?: string;
     }
+    interface FdAmbulanceWlEditor {
+        "entryId"?: string;
+        "onEditor-closed"?: (event: FdAmbulanceWlEditorCustomEvent<string>) => void;
+    }
+    interface FdAmbulanceWlList {
+        "onEntry-clicked"?: (event: FdAmbulanceWlListCustomEvent<string>) => void;
+    }
+
+    interface FdAmbulanceWlAppAttributes {
+        "basePath": string;
+    }
+    interface FdAmbulanceWlEditorAttributes {
+        "entryId": string;
+    }
+
     interface IntrinsicElements {
+        "fd-ambulance-wl-app": Omit<FdAmbulanceWlApp, keyof FdAmbulanceWlAppAttributes> & { [K in keyof FdAmbulanceWlApp & keyof FdAmbulanceWlAppAttributes]?: FdAmbulanceWlApp[K] } & { [K in keyof FdAmbulanceWlApp & keyof FdAmbulanceWlAppAttributes as `attr:${K}`]?: FdAmbulanceWlAppAttributes[K] } & { [K in keyof FdAmbulanceWlApp & keyof FdAmbulanceWlAppAttributes as `prop:${K}`]?: FdAmbulanceWlApp[K] };
+        "fd-ambulance-wl-editor": Omit<FdAmbulanceWlEditor, keyof FdAmbulanceWlEditorAttributes> & { [K in keyof FdAmbulanceWlEditor & keyof FdAmbulanceWlEditorAttributes]?: FdAmbulanceWlEditor[K] } & { [K in keyof FdAmbulanceWlEditor & keyof FdAmbulanceWlEditorAttributes as `attr:${K}`]?: FdAmbulanceWlEditorAttributes[K] } & { [K in keyof FdAmbulanceWlEditor & keyof FdAmbulanceWlEditorAttributes as `prop:${K}`]?: FdAmbulanceWlEditor[K] };
         "fd-ambulance-wl-list": FdAmbulanceWlList;
     }
 }
@@ -31,6 +105,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "fd-ambulance-wl-app": LocalJSX.IntrinsicElements["fd-ambulance-wl-app"] & JSXBase.HTMLAttributes<HTMLFdAmbulanceWlAppElement>;
+            "fd-ambulance-wl-editor": LocalJSX.IntrinsicElements["fd-ambulance-wl-editor"] & JSXBase.HTMLAttributes<HTMLFdAmbulanceWlEditorElement>;
             "fd-ambulance-wl-list": LocalJSX.IntrinsicElements["fd-ambulance-wl-list"] & JSXBase.HTMLAttributes<HTMLFdAmbulanceWlListElement>;
         }
     }
