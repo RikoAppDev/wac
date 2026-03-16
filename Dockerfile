@@ -1,6 +1,8 @@
 ### compilation stage
 FROM node:latest AS build
 
+RUN apt-get update && apt-get install -y --no-install-recommends default-jre-headless && rm -rf /var/lib/apt/lists/*
+
 RUN mkdir /build
 WORKDIR /build
 
