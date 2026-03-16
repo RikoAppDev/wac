@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core';
-import { AmbulanceWaitingListApi, Configuration } from '../../api/ambulance-wl';
+import { AmbulanceWaitingListApi, WaitingListEntry, Configuration } from '../../api/ambulance-wl';
 
 @Component({
   tag: 'fd-ambulance-wl-list',
@@ -12,7 +12,7 @@ export class FdAmbulanceWlList {
   @Prop() ambulanceId: string;
   @State() errorMessage: string;
 
-  waitingPatients: any[];
+  waitingPatients: WaitingListEntry[];
 
   private async getWaitingPatientsAsync() {
     // be prepared for connectivitiy issues
@@ -45,8 +45,8 @@ export class FdAmbulanceWlList {
           ? <div class="error">{this.errorMessage}</div>
           :
           <md-list>
-            {this.waitingPatients.map((patient, index) =>
-              <md-list-item onClick={() => this.entryClicked.emit(index.toString())}>
+            {this.waitingPatients.map(patient =>
+              <md-list-item onClick={() => this.entryClicked.emit(patient.id)}>
                 <div slot="headline">{patient.name}</div>
                 <div slot="supporting-text">{"Predpokladaný vstup: " + patient.estimatedStart?.toLocaleString()}</div>
                 <md-icon slot="start">person</md-icon>
